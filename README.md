@@ -2,6 +2,8 @@
 
 Simple script to merge Tesla dashcam videos to easily view them in a merged file.
 
+![overview](https://github.com/akiyamasho/tesla-dashcam-merge/assets/35907066/d295dfce-39fc-4230-8072-73a2dbe7c868)
+
 Currently tested on MacOS Sonoma 14.4.1.
 
 ### Usage
@@ -35,3 +37,8 @@ cd ./SavedClips/2024-04-27_09-24-05
       ```
       In addition to the merged files, you will see a `merged-output.mp4` file that shows all the merged videos in a grid:
       <img width="1140" alt="スクリーンショット 2024-04-27 21 29 21" src="https://github.com/akiyamasho/tesla-dashcam-merge/assets/35907066/44b8ef6d-3bbf-43e8-9b7e-24ed67c35ac8">
+
+### About
+
+Created this script since I almost got hit by a shrapnel from a truck with uncovered cargo lol.
+Hope it helps others review footage more easily.
