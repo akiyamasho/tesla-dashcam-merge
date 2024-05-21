@@ -10,7 +10,7 @@ Currently tested on MacOS Sonoma 14.4.1.
 
 1. Copy your dashcam videos from the Tesla USB drive.
    
-2. Simply `cd` into a folder for a certain date inside either `SavedClips` or directly `cd` into `RecentClips`.
+2. Simply `cd` into a folder for a certain date inside either `SavedClips` or directly `cd` into `RecentClips` / `SentryClips`.
 
 ```
 # Sample
