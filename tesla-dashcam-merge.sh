@@ -16,7 +16,7 @@ if ! [ -x "$(command -v ffmpeg)" ]; then
 fi
 
 # 1. Put all files with these specific suffixes in their own category folder
-suffixes=("back.mp4" "front.mp4" "left_repeater.mp4" "right_repeater.mp4")
+suffixes=("back.mp4" "front.mp4" "left_repeater.mp4" "left_pillar.mp4" "right_repeater.mp4" "right_pillar.mp4")
 
 for suffix in "${suffixes[@]}"; do
     dir="${suffix%.*}"
@@ -44,14 +44,17 @@ done
 # 3. Merge the output videos into a single grid layout video
 # Only run this block if --merge-grid was specified
 if $MERGE_GRID; then
-    ffmpeg -i front.mp4 -i back.mp4 -i left_repeater.mp4 -i right_repeater.mp4 \
+    ffmpeg -i front.mp4 -i back.mp4 -i left_repeater.mp4 -i right_repeater.mp4 -i left_pillar.mp4 -i right_pillar.mp4 \
     -filter_complex "\
     [0:v]scale=724:369,setpts=PTS-STARTPTS[front]; \
     [1:v]scale=724:369,setpts=PTS-STARTPTS[back]; \
-    [2:v]scale=724:369,setpts=PTS-STARTPTS[left]; \
-    [3:v]scale=724:369,setpts=PTS-STARTPTS[right]; \
-    [front][back]hstack=inputs=2[top]; \
-    [left][right]hstack=inputs=2[bottom]; \
-    [top][bottom]vstack=inputs=2[v]" \
+    [2:v]scale=724:369,setpts=PTS-STARTPTS[left_repeater]; \
+    [3:v]scale=724:369,setpts=PTS-STARTPTS[right_repeater]; \
+    [4:v]scale=724:369,setpts=PTS-STARTPTS[left_pillar]; \
+    [5:v]scale=724:369,setpts=PTS-STARTPTS[right_pillar]; \
+    [front][back]hstack=inputs=2[row1]; \
+    [left_repeater][right_repeater]hstack=inputs=2[row2]; \
+    [left_pillar][right_pillar]hstack=inputs=2[row3]; \
+    [row1][row2][row3]vstack=inputs=3[v]" \
     -map "[v]" merged_output.mp4
 fi
