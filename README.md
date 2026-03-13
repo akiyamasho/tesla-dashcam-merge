@@ -42,6 +42,14 @@ cd ./SavedClips/2024-04-27_09-24-05
 
 You can also run `tesla-dashcam-merge-all-folders.sh` inside `SavedClips` or `SentryClips` to run the script for all the folders inside.
 
+```
+# faster (no grid output in each folder)
+tesla-dashcam-merge-all-folders.sh
+
+# also create merged grid output in each folder
+tesla-dashcam-merge-all-folders.sh --merge-grid
+```
+
 ### About
 
 Created this script since I almost got hit by a shrapnel from a truck with uncovered cargo lol.
